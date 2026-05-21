@@ -4,7 +4,7 @@ import java.io.*;
 import java.net.*;
 
 public class TCPServer {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
         // to create serverSocket bound to port 1234 - tells OS to listen for TCP connections on this port
         ServerSocket server = new ServerSocket(1234);
         System.out.println("Server started on port 1234");
@@ -25,6 +25,7 @@ public class TCPServer {
             // blocks until client sends a full line (ending with newline); returns line without newline
             String msg = in.readLine();
             System.out.println("Received: " + msg);
+            Thread.sleep(15000);
 
             // send response back to client; println() adds newline which client's readLine() expects
             out.println("Echo: " + msg);
